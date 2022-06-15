@@ -1,0 +1,11 @@
+server:
+  port: 8080
+api-zendesk:
+  host: https://granamap.zendesk.com/api/v2
+  username: granamap@granamap.com.br/token
+  token: HdzZ9O9Ee5JGa6jcDy2tdGjJFAVevbOcWQBfio9K
+  tags: granamap_dev
+
+api-granamap-user:
+  host:  https://api-dev.granamap.com.br/v1/user/
+  #  host: http://localhost:8081/v1/user/

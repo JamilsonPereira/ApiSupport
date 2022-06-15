@@ -1,0 +1,108 @@
+server:
+  servlet:
+    context-path: /v1/support
+
+spring:
+  webflux:
+    base-path: /v1/support
+  application:
+    name: api-granamap-support
+  profiles:
+    active: local
+  jackson:
+    mapper:
+      ACCEPT_CASE_INSENSITIVE_ENUMS: true
+  codec:
+    max-in-memory-size: 10MB
+
+
+logging:
+  level:
+    root: ${LOGLEVEL:INFO}
+    org.springframework.web: ${LOGLEVEL:INFO}
+    reactor: INFO
+    valemobi: INFO
+    org.zalando.logbook: TRACE
+
+
+management:
+  info:
+    git:
+      mode: full
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      atlas:
+        enabled: false
+
+
+logbook:
+  exclude:
+    - /auditevents
+    - /beans
+    - /conditions
+    - /configprops
+    - /env
+    - /flyway
+    - /heapdump
+    - /**/actuator/**/*
+    - /**/actuator/*
+    - /actuator/**/*
+    - /actuator/*
+    - /liquibase
+    - /logfile
+    - /loggers
+    - /metrics
+    - /prometheus
+    - /scheduledtasks
+    - /sessions
+    - /shutdown
+    - /threaddump
+    - /trace
+    - /mappings
+    - /**/swagger*
+    - /**/v2/api-docs
+    - /**/configuration/ui/**/*
+    - /**/swagger-resources*/**/*
+    - /**/configuration/security*/**/*
+    - /**/swagger-ui.html
+    - /**/webjars/**
+    - /**/swagger-ui/*
+    - /**/swagger-ui/**
+    - /**/api-docs
+  filter.enabled: true
+  format.style: json
+  obfuscate:
+    headers:
+      - Authorization
+      - X-Secret
+      - senha
+    parameters:
+      - access_token
+      - open_id
+      - id_token
+      - tokenAcesso
+      - senha
+      - password
+      - refreshToken
+      - refresh_token
+      - accessToken
+      - attachment
+  write:
+    category: http.wire-log
+    level: INFO
+  minimum-status: 200
+
+feign:
+  custom:
+    connectTimeout: 5000
+    readTimeout: 5000
+    writeTimeout: 5000
+
+

@@ -1,0 +1,8 @@
+api-zendesk:
+  host: ${ZENDESK_HOST}
+  username: ${ZENDESK_USERNAME}
+  token: ${ZENDESK_TOKEN}
+  tags: granamap
+
+api-granamap-user:
+  host: ${USER_HOST}
